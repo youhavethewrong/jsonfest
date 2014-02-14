@@ -41,9 +41,20 @@ public class OrgJsonFestTest extends JsonFestTest {
 	System.out.println("Org.JSON found an age range of " + youngest + " to " + oldest + " years after " + end + " ms.");
     }
 
+    @Test
     @Override
     public void findLinkCountInDeliciousDump() throws Exception {
-	// TODO Auto-generated method stub
+	long start = System.currentTimeMillis();
+	List<String> articleIds = new ArrayList<String>();
+	JSONArray deli = new JSONArray(new JSONTokener(getDeliciousFileReader()));
+	for (int i = 0; i < deli.length(); i++) {
+            JSONObject update = deli.optJSONObject(i);
+            if(update != null && update.has("id")) {
+                articleIds.add(update.getString("id"));
+            }
+        }
+	long end = System.currentTimeMillis() - start;
+	System.out.println("Org.JSON found " + articleIds.size() + " links in a delicious dump.  It took " + end + " ms.");
 
     }
 }
