@@ -44,9 +44,18 @@ public class NetSfJsonFestTest extends JsonFestTest {
 	System.out.println("Net.SF found an age range of " + youngest + " to " + oldest + " years after " + end + " ms.");
     }
 
+    @Test
     @Override
     public void findLinkCountInDeliciousDump() throws Exception {
-	// TODO Auto-generated method stub
-
+	long start = System.currentTimeMillis();
+	List<String> articleIds = new ArrayList<String>();
+	JSONArray deli = (JSONArray) JSONSerializer.toJSON(IOUtils.toString(getDeliciousFileReader()));	for (int i = 0; i < deli.size(); i++) {
+            JSONObject update = deli.optJSONObject(i);
+            if(update != null && update.has("id")) {
+                articleIds.add(update.getString("id"));
+            }
+        }
+	long end = System.currentTimeMillis() - start;
+	System.out.println("Net.SF found " + articleIds.size() + " links in a delicious dump.  It took " + end + " ms.");
     }
 }

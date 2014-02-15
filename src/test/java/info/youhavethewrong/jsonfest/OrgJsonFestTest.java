@@ -55,6 +55,5 @@ public class OrgJsonFestTest extends JsonFestTest {
         }
 	long end = System.currentTimeMillis() - start;
 	System.out.println("Org.JSON found " + articleIds.size() + " links in a delicious dump.  It took " + end + " ms.");
-
     }
 }
