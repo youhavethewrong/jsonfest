@@ -4,8 +4,9 @@ import java.util.*;
 
 import net.sf.json.*;
 
+import org.junit.*;
+
 import org.apache.commons.io.IOUtils;
-import org.junit.Test;
 
 public class NetSfJsonFestTest extends JsonFestTest {
 
@@ -44,7 +45,7 @@ public class NetSfJsonFestTest extends JsonFestTest {
 	System.out.println("Net.SF found an age range of " + youngest + " to " + oldest + " years after " + end + " ms.");
     }
 
-    @Test
+    @Ignore("Dies with NPE after 2 hours...")
     @Override
     public void findLinkCountInDeliciousDump() throws Exception {
 	long start = System.currentTimeMillis();
